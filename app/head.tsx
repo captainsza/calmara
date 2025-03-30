@@ -9,7 +9,7 @@ export default function Head() {
       <meta property="og:title" content="Eid Special - Words of Peace" />
       <meta property="og:description" content="Celebrate Eid with peaceful and inspirational verses from the Quran" />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content="/eid-banner.jpg" />
+      <meta property="og:image" content="/eid-banner.png" />
       <link rel="icon" href="/favicon.ico" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
