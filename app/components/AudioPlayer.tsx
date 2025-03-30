@@ -14,7 +14,7 @@ interface AudioPlayerProps {
 }
 
 const AudioPlayer = ({ tracks, className = "" }: AudioPlayerProps) => {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);

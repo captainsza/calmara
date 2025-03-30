@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import useAnimatedText from "./helpers/useAnimatedText";
 import AudioPlayer from "./components/AudioPlayer";
+import DisclaimerModal from "./components/DisclaimerModal";
 
 // Audio track list for background music
 const audioTracks = [
@@ -159,6 +160,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-teal-100 dark:from-emerald-950 dark:to-teal-900 flex flex-col items-center justify-center p-4 sm:p-8 font-[family-name:var(--font-geist-sans)] overflow-hidden">
+      {/* Add the disclaimer modal */}
+      <DisclaimerModal />
+      
       {showConfetti && <Confetti />}
       
       {/* Music player - positioned better for both mobile and desktop */}
