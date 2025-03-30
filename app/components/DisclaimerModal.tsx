@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function DisclaimerModal() {
-  const [isOpen, setIsOpen] = useState(true);
-  const [hasAccepted, setHasAccepted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [hasAccepted, setHasAccepted] = useState(true);
 
   // Check if user has seen disclaimer before
   useEffect(() => {
