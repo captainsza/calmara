@@ -3,6 +3,14 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import useAnimatedText from "./helpers/useAnimatedText";
+import AudioPlayer from "./components/AudioPlayer";
+
+// Audio track list for background music
+const audioTracks = [
+  { name: "eid-music-1", src: "/audio/eid-music-1.mp3", label: "Eid Celebration" },
+  { name: "eid-music-2", src: "/audio/eid-music-2.mp3", label: "Peaceful Nasheed" },
+  { name: "eid-music-3", src: "/audio/eid-music-3.mp3", label: "Eid Prayer" },
+];
 
 export default function Home() {
   const [ayat, setAyat] = useState<string | null>(null);
@@ -121,6 +129,11 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-teal-100 dark:from-emerald-950 dark:to-teal-900 flex flex-col items-center justify-center p-4 sm:p-8 font-[family-name:var(--font-geist-sans)] overflow-hidden">
       {showConfetti && <Confetti />}
+      
+      {/* Simplified Audio Player - Fixed at the top right corner */}
+      <div className="fixed top-16 right-4 z-20">
+        <AudioPlayer tracks={audioTracks} />
+      </div>
       
       <div className="w-full max-w-3xl mx-auto text-center">
         {/* Language selector */}
@@ -370,6 +383,9 @@ export default function Home() {
         >
           Spreading peace and understanding on this blessed Eid
         </motion.p>
+        
+        {/* Add a bit more padding at the bottom to account for audio player */}
+        <div className="pb-16"></div>
       </div>
     </div>
   );
