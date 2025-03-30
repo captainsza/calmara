@@ -9,7 +9,7 @@ import AudioPlayer from "./components/AudioPlayer";
 const audioTracks = [
   { name: "eid-music-1", src: "/audio/eid-music-1.mp3", label: "Eid Celebration" },
   { name: "eid-music-2", src: "/audio/eid-music-2.mp3", label: "Peaceful Nasheed" },
-  { name: "eid-music-3", src: "/audio/eid-music-3.mp3", label: "Eid Prayer" },
+ 
 ];
 
 export default function Home() {
@@ -107,21 +107,52 @@ export default function Home() {
     }
   };
 
-  // Confetti animation component
+  // Enhanced Confetti animation component
   const Confetti = () => {
+    // Different shapes for confetti
+    const shapes = [
+      "square",
+      "circle",
+      "triangle",
+      "heart",
+      "star",
+      "moon"
+    ];
+    
+    // Enhanced color palette for Eid celebration
+    const colors = [
+      '#FFD700', // Gold
+      '#FFC107', // Amber
+      '#10B981', // Emerald
+      '#2196F3', // Blue
+      '#F472B6', // Pink
+      '#A78BFA', // Purple
+      '#FFFFFF', // White
+    ];
+    
     return (
       <div className="confetti-container">
-        {[...Array(50)].map((_, i) => (
-          <div 
-            key={i} 
-            className="confetti"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              backgroundColor: ['#FFD700', '#FFC107', '#4CAF50', '#2196F3'][Math.floor(Math.random() * 4)]
-            }}
-          />
-        ))}
+        {[...Array(100)].map((_, i) => {
+          const shape = shapes[Math.floor(Math.random() * shapes.length)];
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          const size = Math.random() * 15 + 5; // Random size between 5-20px
+          
+          return (
+            <div 
+              key={i} 
+              className={`confetti confetti-${shape}`}
+              style={{
+                left: `${Math.random() * 100}%`,
+                width: `${size}px`,
+                height: `${size}px`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${Math.random() * 3 + 2}s`,
+                backgroundColor: color,
+                boxShadow: `0 0 ${Math.floor(size/3)}px ${color}`,
+              }}
+            />
+          );
+        })}
       </div>
     );
   };
@@ -130,14 +161,14 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-teal-100 dark:from-emerald-950 dark:to-teal-900 flex flex-col items-center justify-center p-4 sm:p-8 font-[family-name:var(--font-geist-sans)] overflow-hidden">
       {showConfetti && <Confetti />}
       
-      {/* Simplified Audio Player - Fixed at the top right corner */}
-      <div className="fixed top-16 right-4 z-20">
+      {/* Music player - positioned better for both mobile and desktop */}
+      <div className="fixed top-4 sm:top-16 right-4 z-20">
         <AudioPlayer tracks={audioTracks} />
       </div>
       
       <div className="w-full max-w-3xl mx-auto text-center">
-        {/* Language selector */}
-        <div className="absolute top-4 right-4 flex gap-2 z-10">
+        {/* Language selector - moved down slightly to avoid overlap with music player on mobile */}
+        <div className="absolute top-16 sm:top-4 right-4 flex gap-2 z-10">
           <button 
             onClick={() => setLanguage("english")} 
             className={`px-3 py-1 rounded-full text-sm transition-all ${language === "english" ? "bg-emerald-600 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
